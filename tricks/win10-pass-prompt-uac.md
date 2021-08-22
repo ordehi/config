@@ -2,7 +2,7 @@
 
 This is a good way to protect your PC from running admin tasks unless you enter your password/PIN. This is mostly useful if you share your PC, want to avoid USB Rubber Ducky and the likes from doing damage, or are generally paranoid.
 
-For an automated edit, run _pass-prompt-uac.reg_.
+For an automated edit, run _win10-pass-prompt-uac.reg_.
 Remember to always read scripts before executing them. 😊
 
 Manual edit:

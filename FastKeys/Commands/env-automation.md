@@ -3,12 +3,10 @@
 ```
 CoordMode, Mouse, Screen
 Send, #2
-IfWinNotActive, New Tab - Google Chrome ahk_class Chrome_WidgetWin_1,, WinActivate, New Tab - Google Chrome ahk_class Chrome_WidgetWin_1
-WinWaitActive, New Tab - Google Chrome ahk_class Chrome_WidgetWin_1
-Send, #{3 down}
-IfWinNotActive, Lesson 1 - Preparations ahk_class Chrome_WidgetWin_1,, WinActivate, Lesson 1 - Preparations ahk_class Chrome_WidgetWin_1
-WinWaitActive, Lesson 1 - Preparations ahk_class Chrome_WidgetWin_1
-Send, {3 up}#1
+Sleep, 500
+Send, #3
+Sleep, 500
+Send, #1
 IfWinNotActive, Windows Terminal ahk_class CASCADIA_HOSTING_WINDOW_CLASS,, WinActivate, Windows Terminal ahk_class CASCADIA_HOSTING_WINDOW_CLASS
 WinWaitActive, Windows Terminal ahk_class CASCADIA_HOSTING_WINDOW_CLASS
 Sleep, 5000

@@ -1,40 +1,68 @@
 #!/bin/bash
 
-echo "Let's create a Vanilla Web project. Enter a name for the project..."
+app=""
+pname=""
 
-read PNAME
+while getopts ":n:a:" opt; do
+  case $opt in
+    n)
+      pname="$OPTARG"
+      ;;
+    a)
+      app="$OPTARG"
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+    :)
+      echo "Option -$OPTARG requires an argument." >&2
+      exit 1
+      ;;
+  esac
+done
 
-mkdir $PNAME
+if [[ -z "$pname" ]]; then
+  echo "Enter a pname for the project..."
+  read pname
+fi
 
-touch $PNAME/index.html
-touch $PNAME/style.css
-touch $PNAME/script.js
+mkdir $pname
 
-cat > $PNAME/index.html <<- EOM
+touch $pname/index.html
+touch $pname/style.css
+touch $pname/script.js
+
+cat > $pname/index.html <<- EOM
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>$PNAME</title>
+  <meta pname="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$pname</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Welcome to $PNAME</h1>
+  <h1>Welcome to $pname</h1>
 <script src="script.js"></script>
 </body>
 </html>
 EOM
 
-cat > $PNAME/style.css <<- EOM
+cat > $pname/style.css <<- EOM
 * {
   box-sizing: border-box;
 }
 EOM
 
-cat > $PNAME/script.js <<- EOM
+cat > $pname/script.js <<- EOM
 alert('Script file loaded');
 EOM
 
-echo "Created Vanilla project $PNAME, to go there type 'cd $PNAME'"
+echo "Created Vanilla project $pname, to go there type 'cd $pname'"
+
+if [[ -n "$app" ]]; then
+  echo "Opening project with $app"
+  $app $pname/
+fi
